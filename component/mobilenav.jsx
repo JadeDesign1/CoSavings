@@ -33,7 +33,7 @@ const Mobilenav = ({
                 return (
                   <Link
                     href={li.linkTo}
-                    onClick={() => setopen(false)}
+                    onClick={toggleNav}
                     className=" font-semibold hover:bg-[#cde9da] hover:pl-6 duration-300 text-emerald-900 px-4 py-2 capitalize list-none text-base cursor-pointer flex flex-row gap-6 items-center"
                     key={i}
                   >

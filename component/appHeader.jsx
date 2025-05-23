@@ -5,6 +5,7 @@ import Mobilenav from "./mobilenav";
 import CreateGroupForm from "./form/createGroupForm";
 import JoinGroupForm from "./form/joinGroupForm";
 import { getCurrentUser } from "@/actions/page";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 export const AppHeader = () => {
   const [openMobileNav, setOpenMobileNav] = useState(false);
@@ -111,19 +112,28 @@ export const HomeHeader = () => {
     setShowCreateForm(false);
     setShowJoinForm(!showJoinForm);
   };
+
+  const logoutHandler = async () => {
+    await logout();
+  };
   return (
     <nav className="p-4 w-full fixed z-50 font-semibold bg-white shadow-lg ">
       <div className="flex flex-row items-center justify-between max-w-6xl mx-auto">
         <Link
           href="/home"
-          className="relative text-xl font-bold cursor-pointer "
+          className="relative -mt-4 text-xl font-bold cursor-pointer "
         >
           <span> AJO</span>
           <div className="absolute top-[15px] text-[var(--secondary)]  -right-6">
             NEST
           </div>
         </Link>
-
+        <button
+          className="md:hidden ml-auto w-fit py-2 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-white rounded text-2xl  hover:bg-red-500"
+          onClick={logoutHandler}
+        >
+          <RiLogoutBoxLine />
+        </button>
         <div className="flex flex-row gap-2 items-center">
           <div className="hidden sm:flex">
             <div className="flex text-sm  justify-center  space-x-4">
@@ -143,6 +153,7 @@ export const HomeHeader = () => {
               </div>
             </div>
           </div>
+
           <Mobilenav
             isAuthenticated={isAuthenticated}
             openMobileNav={openMobileNav}

@@ -3,11 +3,9 @@ import React from "react";
 import { navList } from "./mobilenav";
 import Link from "next/link";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { useRouter } from "next/navigation";
 import { logout } from "@/actions/page";
 
 const Sidebar = () => {
-  const router = useRouter();
   const logoutHandler = async () => {
     await logout();
   };
