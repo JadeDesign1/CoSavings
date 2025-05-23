@@ -28,5 +28,5 @@
     animate-[fadeInUp_0.8s_ease-out_forwards];
 }
 .modal-container {
-  @apply bg-black/60 backdrop-blur-sm fixed overflow-y-scroll pt-10 px-2 top-[65px]  left-0 right-0 bottom-0;
+  @apply bg-black/60 backdrop-blur-sm fixed overflow-y-scroll pt-10 px-2 top-[58px]  left-0 right-0 bottom-0;
 }

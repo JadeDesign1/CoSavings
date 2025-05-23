@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Mobilenav from "./mobilenav";
 import CreateGroupForm from "./form/createGroupForm";
 import JoinGroupForm from "./form/joinGroupForm";
-import { getCurrentUser } from "@/actions/page";
+import { getCurrentUser, logout } from "@/actions/page";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 export const AppHeader = () => {
@@ -129,7 +129,7 @@ export const HomeHeader = () => {
           </div>
         </Link>
         <button
-          className="md:hidden ml-auto w-fit py-2 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-white rounded text-2xl  hover:bg-red-500"
+          className="md:hidden ml-auto mr-2 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-white rounded text-2xl  hover:bg-red-500"
           onClick={logoutHandler}
         >
           <RiLogoutBoxLine />

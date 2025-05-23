@@ -32,7 +32,7 @@ export default async function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-4 space-y-6">
-      <h2 className="md:text-2xl text-lg font-bold text-gray-800">
+      <h2 className="md:text-2xl text-lg mt-4 font-bold text-gray-800">
         Welcome back, {name || user.email || "User"}👋
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

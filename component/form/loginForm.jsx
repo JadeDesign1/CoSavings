@@ -55,7 +55,7 @@ const LoginForm = () => {
         handleSubmit,
       }) => {
         return (
-          <section className="md:top[75px] modal-container">
+          <section className="md:top[60px] modal-container">
             <form
               onSubmit={handleSubmit}
               className="px-4 shadow-sm bg-white shadow-[#96b3af] py-4 flex flex-col  rounded-md mx-auto   h-fit text-text mt-12 w-[90%] sm:w-[600px] relative animate-[fadeInUp_0.8s_ease-out_forwards]"

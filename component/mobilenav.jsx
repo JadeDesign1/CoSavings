@@ -26,7 +26,7 @@ const Mobilenav = ({
       </p>
       {/* mobile Nav */}
       {openMobileNav && (
-        <section className="fixed sm:hidden duration-300 z-40 bg-white text-black shadow-lg top-16 left-0 right-0 h-fit">
+        <section className="fixed sm:hidden duration-300 z-40 bg-white text-black shadow-lg top-[63px] left-0 right-0 h-fit">
           <nav className="flex pb-4 flex-col gap-2 pt-4">
             {isAuthenticated &&
               navList.map((li, i) => {
