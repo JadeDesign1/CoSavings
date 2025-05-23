@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.labelStyle {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.fieldStyle {
+  @apply mt-1 p-2 w-full border border-gray-300 rounded-md;
+}
+
+.toggleStyle {
+  @apply absolute top-4 right-4 text-2xl p-1 rounded-full bg-gray-300 shadow shadow-black cursor-pointer;
+}
+
+.create-join-group-container {
+  @apply w-full mx-auto relative p-6 bg-white rounded-lg shadow-md
+    animate-[fadeInUp_0.8s_ease-out_forwards];
+}
+.modal-container {
+  @apply bg-black/60 backdrop-blur-sm fixed overflow-y-scroll pt-10 px-2 top-[65px]  left-0 right-0 bottom-0;
+}
