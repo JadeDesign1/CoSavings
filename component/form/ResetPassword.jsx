@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import AuthButton from "./AuthButton";
+import { SubmiBtn } from "../btn";
 // import { useRouter, useSearchParams } from "next/navigation";
 
 const ResetPassword = () => {
@@ -32,7 +32,7 @@ const ResetPassword = () => {
         </div>
 
         <div className="mt-4">
-          <AuthButton type="Reset Password" loading={loading} />
+          <SubmiBtn text={"Reset Password"}>Reset Password</SubmiBtn>
         </div>
         {error && <p className="text-red-500">{error}</p>}
       </form>
