@@ -23,7 +23,7 @@ export default async function Dashboard() {
   const { data: groupMembers } = await supabase
     .from("members")
     .select("*")
-    .eq("group_id", joinedGroups[0].group_id);
+    .eq("group_id", joinedGroups[0]?.group_id);
 
   console.log(groupMembers);
 
