@@ -129,7 +129,7 @@ export const HomeHeader = () => {
           </div>
         </Link>
         <button
-          className="md:hidden ml-auto mr-2 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-white rounded text-2xl  hover:bg-red-500"
+          className="sm:hidden ml-auto mr-2 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-white rounded text-2xl  hover:bg-red-500"
           onClick={logoutHandler}
         >
           <RiLogoutBoxLine />

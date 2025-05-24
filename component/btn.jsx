@@ -33,7 +33,7 @@ export const SubmiBtn = ({ isSubmitting, text }) => {
     >
       {isSubmitting ? (
         <h1 className="flex flex-row justify-center items-center gap-2">
-          <span>Submitting</span>{" "}
+          <span>Loading</span>{" "}
           <span className="h-6 w-6 animate-spin rounded-full border-4 border-r-gray-800 border-t-gray-950 border-b-gray-500 border-l-white"></span>
         </h1>
       ) : (

@@ -107,6 +107,49 @@ export async function signInWithGoogle() {
   }
 }
 
+export async function forgotPassword({ email }) {
+  const origin = (await headers()).get("origin");
+  const supabase = await createClient();
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${origin}/reset-password`,
+  });
+  if (error) {
+    return { status: error?.message, user: null };
+  }
+  return { status: "success" };
+}
+
+export async function resetPassword({ values, code }) {
+  const supabase = await createClient();
+
+  const { error: verifyError } = await supabase.auth.verifyOtp({
+    type: "recovery",
+    email: values.email, // ✅ REQUIRED
+    token: code,
+  });
+
+  if (verifyError) {
+    return {
+      status: verifyError.message,
+    };
+  }
+
+  // Now user is logged in; proceed to update password
+  const { error } = await supabase.auth.updateUser({
+    password: values.password,
+  });
+
+  if (error) {
+    return {
+      status: error.message,
+    };
+  }
+
+  return {
+    status: "success",
+  };
+}
+
 /* profile */
 export const editUserProfile = async ({ name, email }) => {
   const supabase = await createClient();

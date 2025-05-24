@@ -81,7 +81,7 @@ const LoginForm = () => {
                   type={"password"}
                 />
 
-                <SubmiBtn isSubmitting={isSubmitting} text={"Submit"} />
+                <SubmiBtn isSubmitting={isSubmitting} text={"Login"} />
               </section>{" "}
               <LoginGoogle />
               <div className="mt-2 flex items-center">
