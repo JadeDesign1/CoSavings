@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar */}
-      <div className="md:w-56 w-fit hidden sm:block h-screen transition-all duration-200 bg-inherit border-r-2 border-neutral-300 text-emerald-900 p-4">
+      <div className="md:w-56 w-fit hidden pt-12 sm:block h-screen transition-all duration-200 bg-inherit border-r-2 border-neutral-300 text-emerald-900 p-4">
         <ul className="mt-4 md:text-xl text-3xl">
           {navList.map((link, index) => {
             return (
