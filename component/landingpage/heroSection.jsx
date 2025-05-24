@@ -18,7 +18,7 @@ const HeroSection = () => {
             <Btn1> Get Started</Btn1>
           </div>
         </div>
-        <div className="col-span-1 md:w-1/2 mx-auto md:h-[50vh] h-[40vh] ">
+        <div className=" -mt-16 md:w-1/2 mx-auto md:h-[50vh] h-[40vh] ">
           <Image
             src="/savings.gif"
             alt="Illustration"

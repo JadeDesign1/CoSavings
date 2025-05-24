@@ -8,7 +8,7 @@ export default async function Dashboard() {
     .from("profile")
     .select("full_name, id")
     .eq("id", authUser?.user?.id);
-  const name = user[0].full_name;
+  const name = user[0]?.full_name || authUser?.user?.user_metadata?.full_name;
 
   const { data: createdGroups } = await supabase
     .from("groups")
@@ -24,11 +24,6 @@ export default async function Dashboard() {
     .from("members")
     .select("*")
     .eq("group_id", joinedGroups[0]?.group_id);
-
-  console.log(groupMembers);
-
-  console.log(createdGroups);
-  console.log(joinedGroups);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-4 space-y-6">
