@@ -1,34 +1,64 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { Btn1 } from "../btn";
+import { FiShield, FiClock, FiUsers } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <div>
-      <section className="bg-white pt-16 md:pt-20 px-6 text-center h-screen max-w-8xl mx-auto grid grid-cols-1 items-center justify-center relative">
-        <div className="w-full">
-          <h1 className="lg:text-5xl md:text-3xl text-xl font-serif uppercase text-emerald-900 font-bold mb-4">
+    <section className="min-h-screen w-full px-6 py-16 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center md:pt-16 lg:pt-2 justify-between md:gap-12">
+        {/* Left Section */}
+        <motion.div
+          className="w-full md:w-1/2 text-center md:text-left"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif uppercase font-bold text-cyan-300 mb-4">
             Save Smarter, Together.
           </h1>
-          <p className="lg:text-lg md:text-base text-sm font-semibold text-gray-500 mb-6 max-w-xl mx-auto">
+          <p className="text-base md:text-lg text-gray-300 mb-8 font-medium max-w-lg">
             Easily manage your cooperative contributions, payouts, and group
             savings goals — all in one place.
           </p>
-          <div className="flex justify-center space-x-4">
-            <Btn1> Get Started</Btn1>
+          <Btn1>Get Started</Btn1>
+
+          {/* Micro Features */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-gray-300">
+            <div className="flex items-center gap-2">
+              <FiShield className="text-emerald-400 text-lg" />
+              Secure & Transparent
+            </div>
+            <div className="flex items-center gap-2">
+              <FiClock className="text-emerald-400 text-lg" />
+              Real-Time Tracking
+            </div>
+            <div className="flex items-center gap-2">
+              <FiUsers className="text-emerald-400 text-lg" />
+              Easy Group Management
+            </div>
           </div>
-        </div>
-        <div className=" -mt-16 md:w-1/2 mx-auto md:h-[50vh] h-[40vh] ">
+        </motion.div>
+
+        {/* Right Section - Illustration */}
+        <motion.div
+          className="w-full md:w-1/2 h-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
           <Image
-            src="/savings.gif"
+            src="/svg6.svg"
             alt="Illustration"
             width={1000}
             height={1000}
-            className="w-full h-full"
+            className="w-full max-w-md md:max-w-full mx-auto"
           />
-        </div>
-      </section>
-    </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

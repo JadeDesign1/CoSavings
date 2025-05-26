@@ -26,7 +26,7 @@ const Mobilenav = ({
       </p>
       {/* mobile Nav */}
       {openMobileNav && (
-        <section className="fixed sm:hidden duration-300 z-40 bg-white text-black shadow-lg top-[63px] left-0 right-0 h-fit">
+        <section className="fixed sm:hidden duration-300 z-40 pt-8 rounded-b-2xl bg-[var(--black-soft)] shadow-lg top-[55px] left-0 right-0 h-fit">
           <nav className="flex pb-4 flex-col gap-2 pt-4">
             {isAuthenticated &&
               navList.map((li, i) => {
@@ -34,41 +34,25 @@ const Mobilenav = ({
                   <Link
                     href={li.linkTo}
                     onClick={toggleNav}
-                    className=" font-semibold hover:bg-[#cde9da] hover:pl-6 duration-300 text-emerald-900 px-4 py-2 capitalize list-none text-base cursor-pointer flex flex-row gap-6 items-center"
+                    className=" font-semibold hover:bg-[var(--text-light)] hover:pl-6 duration-300 text-[var(--text-light)] px-4 py-2 capitalize list-none text-base cursor-pointer flex flex-row gap-6 group items-center"
                     key={i}
                   >
-                    <span>{li.title}</span>
-                    <span>{li.icon}</span>
+                    <div className="flex flex-row items-center gap-4 group-hover:text-[var(--primary)]">
+                      <span>{li.title}</span>
+                      <span className="text-lg">{li.icon}</span>
+                    </div>
                   </Link>
                 );
               })}
 
-            <div className="sm:hidden flex justify-center">
-              {isAuthenticated ? (
-                <div className="flex justify-center  space-x-4">
-                  <button
-                    onClick={() => {
-                      toggleCreateGroup(), toggleNav();
-                    }}
-                  >
-                    Create Group
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      toggleJoinForm(), toggleNav();
-                    }}
-                  >
-                    Join Group
-                  </button>
-                </div>
-              ) : (
-                <div className="flex flex-row gap-4 text-sm md:text-base">
-                  <Link onClick={toggleNav} href={"/login"}>
-                    Sign In
+            <div className="sm:hidden pt-4 flex justify-center">
+              {isAuthenticated && (
+                <div className="flex gap-2">
+                  <Link href={"/home/create-group"} className="hover_btn_style">
+                    + Create Group
                   </Link>
-                  <Link onClick={toggleNav} href={"/register"}>
-                    Sign Up
+                  <Link href={"/home/join-group"} className="btn_style ">
+                    Join Group
                   </Link>
                 </div>
               )}

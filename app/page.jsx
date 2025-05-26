@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="bg-white text-gray-900 w-[100vw]">
+      <div className="bg-[var(--black-warm)] text-gray-900 w-[100vw]">
         {/* <!-- Hero Section --> */}
         <HeroSection />
 

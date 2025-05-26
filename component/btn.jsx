@@ -4,7 +4,7 @@ export const Btn1 = ({ children, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-full shadow-md transition-all border border-emerald-500`}
+      className={`bg-[var(--primary)] hover:bg-[var(--black-primary)] text-white duration-200 px-6 py-2 rounded-full shadow-md transition-all border border-[#2f7caf]`}
     >
       {children}
     </button>
@@ -26,9 +26,9 @@ export const SubmiBtn = ({ isSubmitting, text }) => {
       type="submit"
       className={`${
         isSubmitting
-          ? "bg-gray-500 cursor-not-allowed"
-          : "bg-emerald-500 text-black  text-base"
-      } text-center px-8 md:py-2 py-[6px] mt-4 hover:bg-emerald-600 duration-200 rounded-md`}
+          ? "bg-blue-200 cursor-not-allowed"
+          : "bg-blue-300 text-[var(--black-primary)]  text-base"
+      } text-center px-8 md:py-2 py-[6px] mt-4 hover:bg-blue-400 duration-200 rounded-md`}
       disabled={isSubmitting}
     >
       {isSubmitting ? (

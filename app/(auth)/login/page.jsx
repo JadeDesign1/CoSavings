@@ -5,10 +5,8 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <>
-      <div className="w-full flex mt-20 justify-center">
-        <LoginForm />
-      </div>
-    </>
+    <div>
+      <LoginForm />
+    </div>
   );
 }

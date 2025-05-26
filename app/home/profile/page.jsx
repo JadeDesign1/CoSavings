@@ -11,7 +11,7 @@ export default async function ProfilePage() {
     .eq("id", data.user.id);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-[var(--black-warm)] py-12 px-4">
       <ProfileCard userProfile={userProfile[0]} />
     </div>
   );

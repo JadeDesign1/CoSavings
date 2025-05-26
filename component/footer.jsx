@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-600 text-white py-10 text-center">
+    <footer className="bg-[var(--black-soft)] text-white py-10 text-center">
       <h2 className="text-2xl font-bold mb-4">
         Ready to simplify your savings group?
       </h2>

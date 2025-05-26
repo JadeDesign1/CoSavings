@@ -1,14 +1,19 @@
 // components/CreateGroupForm.js
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { HiXMark } from "react-icons/hi2";
 import { CreateGroupformFields } from "@/utils/data";
 import { supabase } from "@/utils/supabase/client";
 import { createGroup } from "@/actions/page";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { SubmiBtn } from "../btn";
 
-const CreateGroupForm = ({ toggleModal }) => {
+const CreateGroupForm = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const initialValues = {
     name: "",
     description: "",
@@ -40,7 +45,7 @@ const CreateGroupForm = ({ toggleModal }) => {
   });
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    setLoading(true);
     const { data: authUserData, error: authUserError } =
       await supabase.auth.getUser();
     if (authUserError) {
@@ -56,89 +61,91 @@ const CreateGroupForm = ({ toggleModal }) => {
     console.log(error);
 
     if (error) {
+      toast.error(error);
       console.error(`error: ${error}`);
     }
+    if (data) {
+      toast.success("Group created✅");
+      router.push("/home");
+    }
+    setLoading(false);
   };
 
   return (
-    <section className="modal-container">
-      <div className="create-join-group-container max-w-4xl">
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          Create Ajo Group
-        </h2>
-        <span onClick={() => toggleModal()} className="toggleStyle">
-          <HiXMark className="text-red-500" />
-        </span>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          <Form>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {CreateGroupformFields.map((field, index) => {
-                return (
-                  <div className="mb-2" key={index}>
-                    <label className="labelStyle" htmlFor={field.name}>
-                      {field.label}
-                    </label>
-                    {field.type && (
-                      <Field
-                        id={field.name}
-                        name={field.name}
-                        type={field.type}
-                        className="fieldStyle"
-                      />
-                    )}
+    <section className="create-join-group-container max-w-4xl">
+      <h2 className="text-2xl text-gray-200 font-bold mb-4 text-center">
+        Create Group
+      </h2>
 
-                    {field.as && field.as === "select" && (
-                      <Field
-                        as={field.as}
-                        id={field.name}
-                        name={field.name}
-                        className="fieldStyle"
-                      >
-                        {field.options?.map((opt, index) => {
-                          return (
-                            <option key={index} value={opt.value}>
-                              {opt.text}
-                            </option>
-                          );
-                        })}
-                      </Field>
-                    )}
-
-                    {field.as && field.as === "textarea" && (
-                      <Field
-                        id={field.name}
-                        name={field.name}
-                        as={field.as}
-                        rows={field.rows}
-                        className="fieldStyle"
-                      />
-                    )}
-
-                    <ErrorMessage
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {CreateGroupformFields.map((field, index) => {
+              return (
+                <div
+                  className={`mb-2 ${
+                    field?.as === "textarea" ? "md:col-span-2" : "col-span-1"
+                  }`}
+                  key={index}
+                >
+                  <label className="labelStyle" htmlFor={field.name}>
+                    {field.label}
+                  </label>
+                  {field.type && (
+                    <Field
+                      id={field.name}
                       name={field.name}
-                      component="div"
-                      className="text-red-500 text-xs"
+                      type={field.type}
+                      className="fieldStyle"
                     />
-                  </div>
-                );
-              })}
-            </div>
+                  )}
 
-            <div className="flex justify-center mt-6">
-              <button
-                type="submit"
-                className="px-6 py-2 bg-blue-500 text-white rounded-lg"
-              >
-                Create Group
-              </button>
-            </div>
-          </Form>
-        </Formik>
-      </div>
+                  {field.as && field.as === "select" && (
+                    <Field
+                      as={field.as}
+                      id={field.name}
+                      name={field.name}
+                      className="fieldStyle"
+                    >
+                      {field.options?.map((opt, index) => {
+                        return (
+                          <option key={index} value={opt.value}>
+                            {opt.text}
+                          </option>
+                        );
+                      })}
+                    </Field>
+                  )}
+
+                  {field.as && field.as === "textarea" && (
+                    <Field
+                      id={field.name}
+                      name={field.name}
+                      as={field.as}
+                      rows={field.rows}
+                      className="fieldStyle"
+                    />
+                  )}
+
+                  <ErrorMessage
+                    name={field.name}
+                    component="div"
+                    className="text-red-500 text-xs"
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <SubmiBtn isSubmitting={loading} text={"Create Group"} />
+          </div>
+        </Form>
+      </Formik>
     </section>
   );
 };

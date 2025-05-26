@@ -11,12 +11,23 @@
   }
 }
 
+:root {
+  --primary: #2b68d8;
+  --black-primary: #010b13;
+  --black-soft: #36454f;
+  --black-warm: #353839;
+  --black-cool: #2c3539;
+  --black-muted: #8fa1a1;
+  --text-light: #9adae6;
+  --white: #fff;
+}
+
 .labelStyle {
-  @apply block text-sm font-medium text-gray-700;
+  @apply block text-sm font-medium text-gray-300;
 }
 
 .fieldStyle {
-  @apply mt-1 p-2 w-full border border-gray-300 rounded-md;
+  @apply mt-1 outline-none text-gray-300 p-2 w-full bg-slate-700 rounded-md;
 }
 
 .toggleStyle {
@@ -24,9 +35,24 @@
 }
 
 .create-join-group-container {
-  @apply w-full mx-auto relative p-6 bg-white rounded-lg shadow-md
-    animate-[fadeInUp_0.8s_ease-out_forwards];
+  @apply w-full mx-auto border border-slate-700 relative p-6 bg-inherit rounded-lg shadow-md;
 }
 .modal-container {
-  @apply bg-black/60 backdrop-blur-sm fixed overflow-y-scroll pt-10 px-2 top-[58px]  left-0 right-0 bottom-0;
+  @apply backdrop-blur-sm fixed flex items-center justify-center px-2 top-0 left-0 right-0 bottom-0 bg-[var(--black-warm)] text-gray-900 w-[100vw];
+}
+
+.form_container {
+  @apply px-4 shadow-sm bg-[var(--black-muted)] shadow-[#96b3af] py-4 flex flex-col  rounded-md mx-auto   h-fit w-[90%] sm:w-[600px] relative animate-[fadeInUp_0.8s_ease-out_forwards];
+}
+
+.nav_style {
+  @apply p-4 w-full fixed z-50 font-semibold bg-[var(--black-soft)] shadow-md text-[var(--text-light)] rounded-b-2xl;
+}
+
+.hover_btn_style {
+  @apply px-4 py-1 rounded-md text-[var(--white)] border border-[#2b68d8] hover:bg-[#2b68d8] transition duration-200;
+}
+
+.btn_style {
+  @apply px-4 py-1 rounded-md bg-[#2b68d8] text-white hover:bg-[#2b68d8c2] transition duration-200;
 }

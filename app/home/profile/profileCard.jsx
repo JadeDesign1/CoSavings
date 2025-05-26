@@ -11,7 +11,7 @@ const ProfileCard = ({ userProfile }) => {
   }, [5000]);
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-xl h-[250px] shadow-md p-6 space-y-4">
+    <div className="max-w-2xl mx-auto bg-[var(--black-muted)] rounded-xl h-[250px] shadow-md p-6 space-y-4">
       <h2 className="text-xl font-semibold">My Profile</h2>
 
       {loading ? (
@@ -27,10 +27,7 @@ const ProfileCard = ({ userProfile }) => {
             </p>
           </div>
 
-          <button
-            onClick={() => setModalOpen(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
-          >
+          <button onClick={() => setModalOpen(true)} className="btn_style">
             Edit Profile
           </button>
         </>

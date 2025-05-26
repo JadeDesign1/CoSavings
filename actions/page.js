@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { nanoid } from "nanoid";
 
 /* auth */
 export const signUp = async ({ email, password, full_name }) => {
@@ -92,7 +93,14 @@ export const logout = async () => {
 };
 
 export async function signInWithGoogle() {
-  const origin = (await headers()).get("origin");
+  const getUrl = async () => {
+    const origin = (await headers()).get("origin");
+    return origin;
+  };
+  const origin =
+    process.env.NODE_ENV === "development"
+      ? await getUrl()
+      : "https://cosavings.vercel.app";
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
@@ -108,7 +116,14 @@ export async function signInWithGoogle() {
 }
 
 export async function forgotPassword({ email }) {
-  const origin = (await headers()).get("origin");
+  const getUrl = async () => {
+    const origin = (await headers()).get("origin");
+    return origin;
+  };
+  const origin =
+    process.env.NODE_ENV === "development"
+      ? await getUrl()
+      : "https://cosavings.vercel.app";
   const supabase = await createClient();
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/reset-password`,
@@ -179,6 +194,7 @@ export const fetchProfile = async (userId) => {
 /* groups */
 export const createGroup = async ({ values, userID }) => {
   const supabase = await createClient();
+  const code = nanoid(6);
 
   if (!userID) {
     console.error("No valid userID — skipping insert.");
@@ -194,9 +210,40 @@ export const createGroup = async ({ values, userID }) => {
         contribution_type: values.contribution_type,
         disbursement_type: values.disbursement_type,
         amount: values.amount,
+        join_code: code,
       },
     ])
     .select(); // only works if SELECT policy is allowed
 
   return { data, error };
+};
+
+export const joinGroup = async ({ code }) => {
+  const supabase = await createClient();
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData?.user?.id) {
+    return { status: userError?.message };
+  }
+
+  const { data: group, error: groupError } = await supabase
+    .from("groups")
+    .select("*")
+    .eq("join_code", code);
+  if (groupError || !group || group.length === 0) {
+    return { status: groupError?.message };
+  }
+
+  const groupId = group[0].id;
+  const userName = userData.user.user_metadata?.name || "Unknown User";
+
+  const { error: insertError } = await supabase.from("members").insert({
+    user_id: userData.user.id,
+    group_id: groupId,
+    name: userName,
+  });
+
+  if (insertError) {
+    return { status: insertError?.message };
+  }
+  return { status: "success" };
 };

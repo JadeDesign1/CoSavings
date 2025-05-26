@@ -8,62 +8,26 @@ import { getCurrentUser, logout } from "@/actions/page";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 export const AppHeader = () => {
-  const [openMobileNav, setOpenMobileNav] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const findUser = async () => {
-      const { status, user } = await getCurrentUser();
-      if (user) {
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-      }
-    };
-    findUser();
-  }, [isAuthenticated]);
-
-  // Close the mobile menu when window size is larger than lg (1024px)
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 640) {
-        setOpenMobileNav(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const toggleNav = () => {
-    setOpenMobileNav(!openMobileNav);
-  };
-
   return (
-    <nav className="p-4 w-full fixed z-50 font-semibold bg-white shadow-lg ">
-      <div className="flex flex-row items-center justify-between max-w-6xl mx-auto">
+    <nav className="nav_style">
+      <div className="flex flex-row items-center justify-between max-w-6xl mx-auto py-1 px-2">
         <Link
           href="/"
-          className="relative -mt-2 text-xl font-bold cursor-pointer "
+          className="relative -mt-2 text-xl text-[var(--primary)] font-bold cursor-pointer"
         >
-          <span> AJO</span>
-          <div className="absolute top-[15px] text-[var(--secondary)]  -right-6">
+          <span>AJO</span>
+          <h4 className="absolute top-[15px] text-[var(--primary)] -right-6">
             NEST
-          </div>
+          </h4>
         </Link>
 
-        <div className="flex flex-row gap-2 items-center">
-          <div className="hidden sm:flex">
-            <div className="flex flex-row gap-4 text-sm md:text-base">
-              <Link href={"/login"}>Sign In</Link>
-              <Link href={"/register"}>Sign Up</Link>
-            </div>
-          </div>
-          <Mobilenav
-            isAuthenticated={isAuthenticated}
-            openMobileNav={openMobileNav}
-            toggleNav={toggleNav}
-          />
+        <div className="flex flex-row gap-4 text-sm md:text-base">
+          <Link href="/login" className="hover_btn_style">
+            Sign In
+          </Link>
+          <Link href="/register" className="btn_style">
+            Sign Up
+          </Link>
         </div>
       </div>
     </nav>
@@ -117,7 +81,7 @@ export const HomeHeader = () => {
     await logout();
   };
   return (
-    <nav className="p-4 w-full fixed z-50 font-semibold bg-white shadow-lg ">
+    <nav className="nav_style">
       <div className="flex flex-row items-center justify-between max-w-6xl mx-auto">
         <Link
           href="/home"
@@ -129,7 +93,7 @@ export const HomeHeader = () => {
           </div>
         </Link>
         <button
-          className="sm:hidden ml-auto mr-2 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-white rounded text-2xl  hover:bg-red-500"
+          className="sm:hidden ml-auto mr-8 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-[var(--white)} ring-2 hover:ring-[var(--black-muted)] ring-black rounded text-2xl  hover:bg-red-500"
           onClick={logoutHandler}
         >
           <RiLogoutBoxLine />
@@ -138,18 +102,12 @@ export const HomeHeader = () => {
           <div className="hidden sm:flex">
             <div className="flex text-sm  justify-center  space-x-4">
               <div className="flex gap-2">
-                <button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-sm transition duration-200"
-                  onClick={toggleCreateGroup}
-                >
+                <Link href={"/home/create-group"} className="hover_btn_style">
                   + Create Group
-                </button>
-                <button
-                  onClick={toggleJoinForm}
-                  className="border border-blue-600 text-blue-600 hover:bg-blue-100 px-4 py-2 rounded-lg shadow-sm transition duration-200"
-                >
+                </Link>
+                <Link href={"/home/join-group"} className="btn_style ">
                   Join Group
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -61,11 +61,8 @@ const Signup = () => {
       }) => {
         const { email, password, full_name } = values;
         return (
-          <div className="md:top[75px] modal-container">
-            <form
-              onSubmit={handleSubmit}
-              className="px-4 shadow-sm bg-white shadow-[#96b3af] py-4 flex flex-col rounded-md mx-auto h-fit text-text mt-12 w-[90%] sm:w-[600px] relative animate-[fadeInUp_0.8s_ease-out_forwards]"
-            >
+          <div className=" modal-container">
+            <form onSubmit={handleSubmit} className="form_container">
               <h2 className="text-xl lg:text-2xl font-bold pb-2">Sign Up</h2>
               <section className="grid grid-cols-1 gap-1">
                 <FormInput
