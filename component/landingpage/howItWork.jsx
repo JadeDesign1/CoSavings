@@ -35,10 +35,10 @@ const HowItWorks = () => {
   return (
     <section className="bg-[var(--black-muted)] py-20 px-6  md:px-20 text-white w-[100vw]">
       <div className="text-center mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-[var(--black-warm)] mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">
           How It Works
         </h2>
-        <p className="text-gray-800 text-base md:text-lg max-w-2xl mx-auto">
+        <p className="text-slate-100 text-base md:text-lg max-w-2xl mx-auto">
           A simple 3-step process to grow and manage your cooperative savings
           with ease.
         </p>

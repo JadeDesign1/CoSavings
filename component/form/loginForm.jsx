@@ -57,7 +57,7 @@ const LoginForm = () => {
         return (
           <section className=" modal-container">
             <form onSubmit={handleSubmit} className="form_container">
-              <h2 className="text-xl lg:text-2xl font-bold pb-2 ">Login</h2>
+              <h2 className="text-xl lg:text-2xl font-bold pb-2 text-[var(--text-light)]">Login</h2>
               <section className="grid grid-cols-1 gap-1">
                 <FormInput
                   value={values.email}
@@ -81,15 +81,15 @@ const LoginForm = () => {
                 <SubmiBtn isSubmitting={isSubmitting} text={"Login"} />
               </section>{" "}
               <LoginGoogle />
-              <div className="mt-2 flex items-center">
+              <div className="mt-2 flex items-center text-[var(--white)]">
                 <h1>{`Don't have an account?`}</h1>
-                <Link className="font-bold ml-2" href="/register">
+                <Link className="font-semibold ml-2 text-[var(--primary)]" href="/register">
                   Sign Up
                 </Link>
               </div>
-              <div className="mt-2 flex items-center">
+              <div className="mt-2 flex items-center text-[var(--white)]">
                 <h1>{`Forgot your password?`}</h1>
-                <Link className="font-bold ml-2" href="/forgot-password">
+                <Link className="font-semibold ml-2 text-[var(--primary)]" href="/forgot-password">
                   Reset Password
                 </Link>
               </div>

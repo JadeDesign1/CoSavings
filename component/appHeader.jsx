@@ -2,15 +2,13 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Mobilenav from "./mobilenav";
-import CreateGroupForm from "./form/createGroupForm";
-import JoinGroupForm from "./form/joinGroupForm";
 import { getCurrentUser, logout } from "@/actions/page";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 export const AppHeader = () => {
   return (
     <nav className="nav_style">
-      <div className="flex flex-row items-center justify-between max-w-6xl mx-auto py-1 px-2">
+      <div className="flex flex-row items-center justify-between max-w-6xl mx-auto px-2">
         <Link
           href="/"
           className="relative -mt-2 text-xl text-[var(--primary)] font-bold cursor-pointer"
@@ -35,9 +33,7 @@ export const AppHeader = () => {
 };
 
 export const HomeHeader = () => {
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [showJoinForm, setShowJoinForm] = useState(false);
-  const [openMobileNav, setOpenMobileNav] = useState(false);
+    const [openMobileNav, setOpenMobileNav] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -68,15 +64,6 @@ export const HomeHeader = () => {
     setOpenMobileNav(!openMobileNav);
   };
 
-  const toggleCreateGroup = () => {
-    setShowJoinForm(false);
-    setShowCreateForm(!showCreateForm);
-  };
-  const toggleJoinForm = () => {
-    setShowCreateForm(false);
-    setShowJoinForm(!showJoinForm);
-  };
-
   const logoutHandler = async () => {
     await logout();
   };
@@ -85,15 +72,15 @@ export const HomeHeader = () => {
       <div className="flex flex-row items-center justify-between max-w-6xl mx-auto">
         <Link
           href="/home"
-          className="relative -mt-4 text-xl font-bold cursor-pointer "
+          className="relative -mt-4 text-xl text-[var(--primary)] font-bold cursor-pointer "
         >
           <span> AJO</span>
-          <div className="absolute top-[15px] text-[var(--secondary)]  -right-6">
+          <div className="absolute top-[15px] text-[var(--primary)]  -right-6">
             NEST
           </div>
         </Link>
         <button
-          className="sm:hidden ml-auto mr-8 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center bg-red-600 text-[var(--white)} ring-2 hover:ring-[var(--black-muted)] ring-black rounded text-2xl  hover:bg-red-500"
+          className="sm:hidden ml-auto mr-6 w-fit py-1 px-2 flex flex-row gap-2 justify-center items-center text-red-500 ring-1 hover:ring-[var(--black-muted)] ring-gray-300 rounded text-2xl"
           onClick={logoutHandler}
         >
           <RiLogoutBoxLine />
@@ -116,16 +103,10 @@ export const HomeHeader = () => {
             isAuthenticated={isAuthenticated}
             openMobileNav={openMobileNav}
             toggleNav={toggleNav}
-            toggleCreateGroup={toggleCreateGroup}
-            toggleJoinForm={toggleJoinForm}
           />
         </div>
 
-        {/* create and join group overlay */}
-        {showCreateForm && (
-          <CreateGroupForm toggleModal={() => toggleCreateGroup()} />
-        )}
-        {showJoinForm && <JoinGroupForm toggleModal={() => toggleJoinForm()} />}
+       
       </div>
     </nav>
   );

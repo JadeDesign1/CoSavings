@@ -16,7 +16,7 @@ const FormInput = ({
   return (
     <>
       <div className="flex flex-row items-center justify-between pt-2">
-        <label className=" text-base lg:text-lg tracking-wider capitalize text-black">
+        <label className=" text-base lg:text-lg tracking-wider capitalize text-white">
           {name === "confirm-password" ? "Confirm Password" : label}
         </label>
         {error && <span className="text-red-500 text-xs">{error}</span>}
@@ -24,7 +24,7 @@ const FormInput = ({
       <div className="relative w-full">
         <input
           type={type === "password" && !show ? "password" : "text"} // ✅ Toggles input type
-          className="outline-none pl-2  w-full bg-gray-200  rounded-md text-base py-1"
+          className="outline-none pl-2  w-full bg-neutral-800/30  rounded-md text-base text-white py-1"
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}

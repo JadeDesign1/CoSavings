@@ -42,7 +42,7 @@
 }
 
 .form_container {
-  @apply px-4 shadow-sm bg-[var(--black-muted)] shadow-[#96b3af] py-4 flex flex-col  rounded-md mx-auto   h-fit w-[90%] sm:w-[600px] relative animate-[fadeInUp_0.8s_ease-out_forwards];
+  @apply px-4 shadow-sm bg-[#464e5052] shadow-[#677a78] py-4 flex flex-col  rounded-md mx-auto   h-fit w-[90%] sm:w-[600px] relative animate-[fadeInUp_0.8s_ease-out_forwards];
 }
 
 .nav_style {

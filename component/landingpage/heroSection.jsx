@@ -7,26 +7,26 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen w-full px-6 py-16 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center md:pt-16 lg:pt-2 justify-between md:gap-12">
+    <section className="min-h-screen md:h-screen w-full px-6 pt-12 lg:pt-8 pb-4 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center md:pt-16 lg:pt-2 justify-between md:gap-8">
         {/* Left Section */}
         <motion.div
-          className="w-full md:w-1/2 text-center md:text-left"
+          className="w-full h-1/2 md:w-1/2 text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif uppercase font-bold text-cyan-300 mb-4">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif uppercase font-bold text-[var(--primary)] mb-2">
             Save Smarter, Together.
           </h1>
-          <p className="text-base md:text-lg text-gray-300 mb-8 font-medium max-w-lg">
+          <p className="text-base md:text-lg md:mb-8 text-gray-300 mb-4 font-medium max-w-lg">
             Easily manage your cooperative contributions, payouts, and group
             savings goals — all in one place.
           </p>
           <Btn1>Get Started</Btn1>
 
           {/* Micro Features */}
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-gray-300">
+          <div className="mt-10 grid grid-cols-3 sm:grid-cols-3 gap-2 text-sm text-gray-300">
             <div className="flex items-center gap-2">
               <FiShield className="text-emerald-400 text-lg" />
               Secure & Transparent
@@ -44,7 +44,7 @@ const HeroSection = () => {
 
         {/* Right Section - Illustration */}
         <motion.div
-          className="w-full md:w-1/2 h-auto"
+          className="w-full md:w-1/2 xl:w-[48%] h-auto "
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
