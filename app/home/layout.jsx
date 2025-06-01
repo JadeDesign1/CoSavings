@@ -1,15 +1,17 @@
 import Sidebar from "@/component/sidebar";
 import React from "react";
 
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
-    <div className="flex h-screen pt-8 bg-[var(--black-warm)] text-gray-900">
+    <div className="flex min-h-screen w-[100vw] bg-[var(--black-warm)] text-gray-900">
       <Sidebar />
-      <div className="p-6  min-h-screen  overflow-y-scroll w-full">
-        {children}
+      <div className="sm:pl-[60px] md:pl-56 w-full min-h-screen overflow-y-auto">
+        <div className="px-6 pt-14">
+          {children}
+        </div>
       </div>
     </div>
   );
 };
 
-export default layout;
+export default Layout;

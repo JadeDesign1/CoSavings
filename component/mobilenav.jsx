@@ -1,6 +1,6 @@
 import React from "react";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { HiMiniXMark } from "react-icons/hi2";
+import { HiMiniUserGroup, HiMiniXMark } from "react-icons/hi2";
 import Link from "next/link";
 import { ImProfile } from "react-icons/im";
 import { CiSettings } from "react-icons/ci";
@@ -8,6 +8,7 @@ import { IoIosHome } from "react-icons/io";
 
 export const navList = [
   { title: "Home", linkTo: "/home", icon: <IoIosHome /> },
+  { title: "My Group", linkTo: "/home/group", icon: <HiMiniUserGroup /> },
   { title: "Profile", linkTo: "/home/profile", icon: <ImProfile /> },
   { title: "Setting", linkTo: "/home/setting", icon: <CiSettings /> },
 ];
